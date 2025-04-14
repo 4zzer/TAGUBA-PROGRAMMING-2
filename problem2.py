@@ -13,7 +13,6 @@ def files():
         
     return content1, content2
 
-
 def findFile():
     x = 2
     while x > 0:
@@ -24,15 +23,18 @@ def findFile():
             print(f'Error: Could not open file {merge}')
             exit()
 
-
 def newFile():
-    fileName = input('Enter the new file name:')
     content1, content2 = files()
-    with open(f'{fileName}.txt', 'a')as file:
-        file.write(content1 + '\n')
-        file.write(content2)
-
-
+    fileName = input('Enter the new file name:').strip()
+    if os.path.exists(fileName):
+        print(f'Error: {fileName} already exist!!')
+        exit()
+        
+    else:
+        with open(f'{fileName}.txt', 'a')as file:
+            file.write(content1 + '\n')
+            file.write(content2)
+        print('Files merge sucessfully!!')
 files()
 findFile()
 newFile()
