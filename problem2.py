@@ -17,7 +17,7 @@ def files():
 def findFile():
     x = 2
     while x > 0:
-        merge = input('Enter the name of file you want to merge: ')
+        merge = input('Enter the name of file you want to merge: ').strip()
         if os.path.exists(merge):
             x -= 1
         else:
